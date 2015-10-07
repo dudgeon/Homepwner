@@ -82,14 +82,29 @@ class ItemsViewController: UITableViewController {
     // this will get execute once for each row
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        // doing this to adopt our custom TableViewCell -- get new or recycled cell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
+        
+        
+        // commented out on page 139 to enable custom TableViewCell
         // create an instance of UITableViewCell, with default appearance
         //let cell = UITableViewCell(style: .Value1, reuseIdentifier: "UITableViewCell") // don't forget to set the cell Reuse Identifier in the storyboard!!!
-        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
+        //let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
+        
+        // Update the labels for the new preferred text size
+        cell.updateLabels()
         
         // set the text on the cell with the descriotion of the item
         let item = itemStore.allItems[indexPath.row]
-        cell.textLabel?.text = item.name // not sure why we need to optioinal-chain textLabel on assignment....
-        cell.detailTextLabel?.text = "\(item.valueInDollars)"
+        
+        // commented out on page 139 to enable custom TableViewCell
+        //cell.textLabel?.text = item.name // not sure why we need to optioinal-chain textLabel on assignment....
+        //cell.detailTextLabel?.text = "\(item.valueInDollars)"
+        
+        // doing this to adopt our custom TableViewCell (p. 139) -- Configure the cell with the Item
+        cell.nameLabel.text = item.name
+        cell.serialNumberLabel.text = item.serialNumber
+        cell.valueLabel.text = "$\(item.valueInDollars)"
         
         return cell
     }
@@ -105,6 +120,13 @@ class ItemsViewController: UITableViewController {
         let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
+        
+        // for now, tableView needs to know the height of our cutom row ([_] there is a programmatic way to do this, we will do it later
+        // tableView.rowHeight = 65
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 65
+        
     }
     
 }
