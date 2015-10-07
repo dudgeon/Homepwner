@@ -12,7 +12,20 @@ import UIKit
 
 class ItemsViewController: UITableViewController {
     
+    
+    // MODEL:
     var itemStore: ItemStore!
+    
+    
+    // VIEW:
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        navigationItem.leftBarButtonItem = editButtonItem()
+    }
+    
+    
+    // CONTROLLER:
     
     // Chapter 10: Adding editing functionality
     
@@ -30,25 +43,27 @@ class ItemsViewController: UITableViewController {
         }
         
     }
+
     
-    @IBAction func toggleEditingMode(sender: AnyObject) {
-        
-        // if you are currently in editing mode...
-        if editing {
-            // change text of buttons to inform user of state
-            sender.setTitle("Edit", forState: .Normal)
-            
-            // Turn off editing mode
-            setEditing(false, animated: true)
-        } else {
-            // change text of buttons to inform user of state
-            sender.setTitle("Done", forState: .Normal)
-            
-            // Enter editing mode
-            setEditing(true, animated: true)
-        }
-        
-    }
+    // no longer needed due to nav bar edit button
+//    @IBAction func toggleEditingMode(sender: AnyObject) {
+//        
+//        // if you are currently in editing mode...
+//        if editing {
+//            // change text of buttons to inform user of state
+//            sender.setTitle("Edit", forState: .Normal)
+//            
+//            // Turn off editing mode
+//            setEditing(false, animated: true)
+//        } else {
+//            // change text of buttons to inform user of state
+//            sender.setTitle("Done", forState: .Normal)
+//            
+//            // Enter editing mode
+//            setEditing(true, animated: true)
+//        }
+//        
+//    }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -112,14 +127,16 @@ class ItemsViewController: UITableViewController {
     // pad the top of the tableView
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
-        // get the height of the status bar
-        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
-        
-        // adjust the UIEdgeInsets
-        let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
-        tableView.contentInset = insets
-        tableView.scrollIndicatorInsets = insets
+        //no longer required due to navbar
+//        // get the height of the status bar
+//        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+//        
+//        // adjust the UIEdgeInsets
+//        let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
+//        tableView.contentInset = insets
+//        tableView.scrollIndicatorInsets = insets
         
         // for now, tableView needs to know the height of our cutom row ([_] there is a programmatic way to do this, we will do it later
         // tableView.rowHeight = 65

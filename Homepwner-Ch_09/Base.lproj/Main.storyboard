@@ -105,7 +105,13 @@
                             <outlet property="delegate" destination="8Cj-T9-jIA" id="ix0-NS-I80"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="915-RW-PHg"/>
+                    <navigationItem key="navigationItem" title="Homepwner" id="915-RW-PHg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8pI-12-CRm">
+                            <connections>
+                                <action selector="addNewItem:" destination="8Cj-T9-jIA" id="p29-5S-eOl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4UU-tv-BO9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

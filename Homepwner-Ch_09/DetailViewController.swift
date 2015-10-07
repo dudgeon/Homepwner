@@ -12,7 +12,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     
     // MODEL:
-    var item: Item! // looks dangerous to me...
+    var item: Item! {
+        didSet {
+            navigationItem.title = item.name // Set VacController title to item title; remember this for later!
+        }
+    } // looks dangerous to me...
     
     let numberFormatter: NSNumberFormatter = {
         let formatter = NSNumberFormatter()
@@ -29,6 +33,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         return formatter
     }()
     
+
     
     // VIEW: 
     @IBOutlet var nameField: UITextField!
