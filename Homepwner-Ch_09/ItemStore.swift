@@ -22,10 +22,10 @@ class ItemStore {
     }
     
     // let's create five items
-    init() {
-        for _ in 0..<20 {
-            createItem()
-        }
-    }
+    //    init() {
+    //        for _ in 0..<5 {
+    //            createItem()
+    //        }
+    //    }
     
 }
