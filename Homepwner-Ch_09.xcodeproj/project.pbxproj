@@ -489,6 +489,7 @@
 				6CC5210E1BC4873A00B2F90C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6CC5210F1BC4873A00B2F90C /* Build configuration list for PBXNativeTarget "Homepwner-Ch_09Tests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +498,7 @@
 				6CC521111BC4873A00B2F90C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6CC521121BC4873A00B2F90C /* Build configuration list for PBXNativeTarget "Homepwner-Ch_09UITests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +507,7 @@
 				6CC521141BC4873A00B2F90C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
