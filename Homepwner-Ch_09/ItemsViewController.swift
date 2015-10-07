@@ -129,4 +129,22 @@ class ItemsViewController: UITableViewController {
         
     }
     
+    // PREPARE FOR SEGUE
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        // if the triggered segue is the "ShowItem" segue
+        if segue.identifier == "ShowItem" {
+            
+            // figure out which row was just tapped
+            if let row = tableView.indexPathForSelectedRow?.row {
+                
+                // get the item associated with this row and pass it along
+                let item = itemStore.allItems[row]
+                let detailViewController = segue.destinationViewController as! DetailViewController // hmm... first time seeing us create an instance of a view controller...
+                detailViewController.item = item
+                
+            }
+        }
+    }
+    
 }
