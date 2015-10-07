@@ -147,4 +147,12 @@ class ItemsViewController: UITableViewController {
         }
     }
     
+    // PREPARE TO RETURN FROM DetailViewController
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
 }

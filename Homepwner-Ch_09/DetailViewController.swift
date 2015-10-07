@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITextFieldDelegate {
     
     
     // MODEL:
@@ -49,7 +49,34 @@ class DetailViewController: UIViewController {
         dateLabel.text = dateFormatter.stringFromDate(item.dateCreated)
     }
     
+    // Save before returnin to ItemsViewController
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Clear first responder(s) -- hide keyboard
+        view.endEditing(true)
+        
+        // "Save" changes to item
+        item.name = nameField.text ?? "" // [_] may adapt this to require a name, disregard edits if empty
+        item.serialNumber = serialNumberField.text // why no optional unwrapping/nil coalescing?
+        
+        if let valueText = valueField.text, value = numberFormatter.numberFromString(valueText) {
+            item.valueInDollars = value.integerValue
+        } else {
+            item.valueInDollars = 0
+        }
+    }
     
+    // Catch "RETURN" from keyboard, dismiss keyboard
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    @IBAction func backGroundTapped(sender: AnyObject) {
+        view.endEditing(true)
+    }
     
     
 }
