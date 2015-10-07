@@ -11,6 +11,18 @@ import UIKit
 class ItemStore {
     
     var allItems = [Item]()
+    var allExpensiveItems: [Item] {
+        return allItems.filter({$0.valueInDollars > 50}).sort({$0.valueInDollars > $1.valueInDollars})
+
+    }
+    
+    var allCheapItems: [Item] {
+        return allItems.filter({$0.valueInDollars <= 50}).sort({$0.valueInDollars > $1.valueInDollars})
+
+    }
+    
+    
+    
     
     // the func that ItemsViewController will call to create a new item:
     func createItem() -> Item {
@@ -23,7 +35,7 @@ class ItemStore {
     
     // let's create five items
     init() {
-        for _ in 0..<20 {
+        for _ in 0..<10 {
             createItem()
         }
     }
