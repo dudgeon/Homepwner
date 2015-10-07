@@ -28,4 +28,13 @@ class ItemStore {
     //        }
     //    }
     
+
+    // providing a delete action to pass to the table view commitEditingStyle 'method'
+    func removeItem(item: Item) {
+        if let index = allItems.indexOf(item) {
+            allItems.removeAtIndex(index)
+        }
+    }
+    
+    
 }

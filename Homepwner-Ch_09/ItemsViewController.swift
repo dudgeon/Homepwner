@@ -50,6 +50,22 @@ class ItemsViewController: UITableViewController {
         
     }
     
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // if the table view is asking to commit a delete command...
+        if editingStyle == .Delete {
+            let item = itemStore.allItems[indexPath.row]
+            
+            // remove the item from the store
+            itemStore.removeItem(item)
+            
+            // also remove that row from the table view with an animation
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+        
+    }
+
+    
     
     // how many rows?
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
