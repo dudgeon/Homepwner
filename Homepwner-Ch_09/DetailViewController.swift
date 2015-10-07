@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITextFieldDelegate {
+class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     
     // MODEL:
@@ -40,6 +40,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var serialNumberField: UITextField!
     @IBOutlet var valueField: UITextField!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var imageView: UIImageView!
     
 
     
@@ -71,6 +72,44 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             item.valueInDollars = 0
         }
     }
+    
+    
+    // MARK: PHOTOS!!!!!
+
+    // Take/Select a Photo
+    @IBAction func takePicture(sender: UIBarButtonItem) {
+        
+        let imagePicker = UIImagePickerController()
+        
+        // If the device has a camera, take a picture; otherwise, just pick from photo library
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            imagePicker.sourceType = .Camera
+        } else {
+            imagePicker.sourceType = .PhotoLibrary
+        }
+        
+        imagePicker.delegate = self
+        
+        // Present the image picker
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    // Catch reference to selected photo
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        // Get picked image from returned info dictionary
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        // Put image onto screen in our image view
+        imageView.image = image
+        
+        // Take image picker off the screen -- must call
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+
+    
+    
+    // UTILITIES
     
     // Catch "RETURN" from keyboard, dismiss keyboard
     func textFieldShouldReturn(textField: UITextField) -> Bool {

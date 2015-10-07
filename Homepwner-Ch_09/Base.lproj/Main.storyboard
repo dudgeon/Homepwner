@@ -14,40 +14,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="f89-Ep-Nx3">
-                            <rect key="frame" x="0.0" y="64" width="600" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6S-bA-Voh">
-                                    <rect key="frame" x="12" y="15" width="30" height="30"/>
-                                    <animations/>
-                                    <state key="normal" title="Edit"/>
-                                    <connections>
-                                        <action selector="toggleEditingMode:" destination="8Cj-T9-jIA" eventType="touchUpInside" id="a08-wr-6dV"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3p-Vs-5Jx">
-                                    <rect key="frame" x="558" y="15" width="30" height="30"/>
-                                    <animations/>
-                                    <state key="normal" title="Add"/>
-                                    <connections>
-                                        <action selector="addNewItem:" destination="8Cj-T9-jIA" eventType="touchUpInside" id="O7v-Br-bFb"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <animations/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="Q3p-Vs-5Jx" firstAttribute="height" secondItem="O6S-bA-Voh" secondAttribute="height" id="JCO-Q6-XYE"/>
-                                <constraint firstAttribute="trailing" secondItem="Q3p-Vs-5Jx" secondAttribute="trailing" constant="12" id="VIo-Jz-jvn"/>
-                                <constraint firstItem="O6S-bA-Voh" firstAttribute="top" secondItem="f89-Ep-Nx3" secondAttribute="top" constant="15" id="aaO-P1-o40"/>
-                                <constraint firstItem="O6S-bA-Voh" firstAttribute="leading" secondItem="f89-Ep-Nx3" secondAttribute="leading" constant="12" id="gWA-Ni-umR"/>
-                                <constraint firstItem="Q3p-Vs-5Jx" firstAttribute="centerY" secondItem="O6S-bA-Voh" secondAttribute="centerY" id="oNT-6Y-GD3"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="65" id="xBg-Fa-z9h" customClass="ItemCell" customModule="Homepwner_Ch_09" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="152" width="600" height="65"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xBg-Fa-z9h" id="ya4-J7-QGV">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="64.5"/>
@@ -130,7 +99,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zcu-s3-eGo">
-                                <rect key="frame" x="20" y="72" width="560" height="520"/>
+                                <rect key="frame" x="20" y="72" width="560" height="484"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dNd-Xd-Ths">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
@@ -199,16 +168,21 @@
                                         <animations/>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aql-k6-RuG">
-                                        <rect key="frame" x="0.0" y="114" width="560" height="406"/>
+                                        <rect key="frame" x="0.0" y="114" width="560" height="20.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="246" verticalHuggingPriority="246" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="yIt-rZ-5z1">
+                                        <rect key="frame" x="0.0" y="142.5" width="560" height="341.5"/>
+                                        <animations/>
+                                    </imageView>
                                 </subviews>
                                 <animations/>
                                 <constraints>
                                     <constraint firstItem="R2g-Ca-Xvf" firstAttribute="leading" secondItem="1Mc-Yg-8xA" secondAttribute="leading" id="2z1-cQ-UKV"/>
+                                    <constraint firstAttribute="bottom" secondItem="yIt-rZ-5z1" secondAttribute="bottom" id="5Ra-Cu-v0Z"/>
                                     <constraint firstItem="R2g-Ca-Xvf" firstAttribute="trailing" secondItem="vH9-Jl-Hm1" secondAttribute="trailing" id="Fos-td-aEr"/>
                                     <constraint firstItem="R2g-Ca-Xvf" firstAttribute="leading" secondItem="vH9-Jl-Hm1" secondAttribute="leading" id="U3n-bo-CqC"/>
                                     <constraint firstItem="R2g-Ca-Xvf" firstAttribute="trailing" secondItem="1Mc-Yg-8xA" secondAttribute="trailing" id="a8i-58-Lee"/>
@@ -220,30 +194,40 @@
                                     </mask>
                                 </variation>
                             </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GH0-PC-RkV">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="rZI-TJ-6Xo"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="nv7-dh-Fn1">
+                                        <connections>
+                                            <action selector="takePicture:" destination="xHj-cd-qZ3" id="edQ-nb-hHK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Aql-k6-RuG" firstAttribute="centerX" secondItem="rLt-Q3-hAl" secondAttribute="centerX" id="1rV-xm-Ilt"/>
-                            <constraint firstItem="Iyv-qe-ctX" firstAttribute="top" secondItem="zcu-s3-eGo" secondAttribute="bottom" constant="8" id="7bR-Wh-f3X"/>
                             <constraint firstItem="zcu-s3-eGo" firstAttribute="top" secondItem="rsi-gN-60I" secondAttribute="bottom" constant="8" id="HtB-lR-GbY"/>
+                            <constraint firstItem="GH0-PC-RkV" firstAttribute="top" secondItem="yIt-rZ-5z1" secondAttribute="bottom" id="MJf-4s-hca"/>
+                            <constraint firstItem="Iyv-qe-ctX" firstAttribute="top" secondItem="GH0-PC-RkV" secondAttribute="bottom" id="YHl-yp-uWb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GH0-PC-RkV" secondAttribute="trailing" constant="-20" id="a7k-lj-6Aa"/>
                             <constraint firstItem="zcu-s3-eGo" firstAttribute="leading" secondItem="rLt-Q3-hAl" secondAttribute="leadingMargin" id="cMl-on-NIU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zcu-s3-eGo" secondAttribute="trailing" id="ky2-si-qYB"/>
-                            <constraint firstItem="Aql-k6-RuG" firstAttribute="centerY" secondItem="rLt-Q3-hAl" secondAttribute="centerY" id="ucQ-0x-P8E"/>
+                            <constraint firstItem="GH0-PC-RkV" firstAttribute="leading" secondItem="rLt-Q3-hAl" secondAttribute="leadingMargin" constant="-20" id="pOj-y2-GWZ"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="1rV-xm-Ilt"/>
-                                <exclude reference="ucQ-0x-P8E"/>
-                            </mask>
-                        </variation>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="sy1-ik-4Eb" appends="YES" id="mAa-xT-481"/>
                         </connections>
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="Aql-k6-RuG" id="nTI-LQ-cME"/>
+                        <outlet property="imageView" destination="yIt-rZ-5z1" id="Va2-hb-7L7"/>
                         <outlet property="nameField" destination="aks-v1-r9a" id="dcx-TT-e9A"/>
                         <outlet property="serialNumberField" destination="l59-Jf-fwj" id="4wI-kd-n51"/>
                         <outlet property="valueField" destination="7sB-Wx-zyf" id="fE7-tB-JGk"/>
