@@ -17,8 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        // Create a ItemStore()
+        // Create an ItemStore()
         let itemStore = ItemStore()
+        
+        // Create an ImageStore()
+        let imageStore = ImageStore()
         
         // Access the ItemsViewController and set its item store
         // let itemsController = window!.rootViewController as! ItemsViewController //-- broken by addition of UINavigationController, now no longer root
@@ -26,7 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // ADD THESE TO RESOLVE ABOVE wrt UINavigationController
         let navController = window!.rootViewController as! UINavigationController
         let itemsController = navController.topViewController as! ItemsViewController
+
         itemsController.itemStore = itemStore
+        itemsController.imageStore = imageStore
         
         return true
     }

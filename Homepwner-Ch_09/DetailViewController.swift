@@ -11,12 +11,15 @@ import UIKit
 class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     
-    // MODEL:
+    // MARK: - MODEL:
     var item: Item! {
         didSet {
             navigationItem.title = item.name // Set VacController title to item title; remember this for later!
         }
-    } // looks dangerous to me...
+    }
+    
+    var imageStore: ImageStore! // instantiate ImageStore
+    
     
     let numberFormatter: NSNumberFormatter = {
         let formatter = NSNumberFormatter()
@@ -35,7 +38,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     
 
     
-    // VIEW: 
+    // MARK: - VIEW:
     @IBOutlet var nameField: UITextField!
     @IBOutlet var serialNumberField: UITextField!
     @IBOutlet var valueField: UITextField!
@@ -44,7 +47,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     
 
     
-    // CONTROLLER:
+    // MARK: - CONTROLLER:
+    
+    // MARK: Loading the detail view
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,16 +58,23 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         serialNumberField.text = item.serialNumber
         valueField.text = numberFormatter.stringFromNumber(item.valueInDollars)
         dateLabel.text = dateFormatter.stringFromDate(item.dateCreated)
+        
+        // get the item key
+        let key = item.itemKey
+        
+        // if there is an associated image with the item, display it on the image view
+        let imageToDisplay = imageStore.imageForKey(key)
+        imageView.image = imageToDisplay
     }
     
-    // Save before returnin to ItemsViewController
+    // "Save" (to memory, not NSCache) before returning to ItemsViewController
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Clear first responder(s) -- hide keyboard
         view.endEditing(true)
         
-        // "Save" changes to item
+        // "Save" (to memory, not NSCache) changes to item
         item.name = nameField.text ?? "" // [_] may adapt this to require a name, disregard edits if empty
         item.serialNumber = serialNumberField.text // why no optional unwrapping/nil coalescing?
         
@@ -96,8 +108,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     
     // Catch reference to selected photo
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+
         // Get picked image from returned info dictionary
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        // Store the image in the ImageStore for the item's key
+        imageStore.setImage(image, forkey: item.itemKey)
         
         // Put image onto screen in our image view
         imageView.image = image
@@ -109,7 +125,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
 
     
     
-    // UTILITIES
+    // MARK: - UTILITIES
     
     // Catch "RETURN" from keyboard, dismiss keyboard
     func textFieldShouldReturn(textField: UITextField) -> Bool {

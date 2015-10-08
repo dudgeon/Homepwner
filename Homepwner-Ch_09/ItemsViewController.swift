@@ -15,6 +15,7 @@ class ItemsViewController: UITableViewController {
     
     // MODEL:
     var itemStore: ItemStore!
+    var imageStore: ImageStore!
     
     
     // VIEW:
@@ -29,6 +30,7 @@ class ItemsViewController: UITableViewController {
     
     // Chapter 10: Adding editing functionality
     
+    // MARK: Create new Item
     @IBAction func addNewItem(sender: AnyObject) {
         
         // create a new item and add it to the store FIRST!
@@ -65,11 +67,15 @@ class ItemsViewController: UITableViewController {
 //        
 //    }
     
+    // MARK: Edit items
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         // if the table view is asking to commit a delete command...
         if editingStyle == .Delete {
             let item = itemStore.allItems[indexPath.row]
+            
+            // remove the item from the image store
+            imageStore.deleteImageForKey(item.itemKey)
             
             // remove the item from the store
             itemStore.removeItem(item)
@@ -159,6 +165,7 @@ class ItemsViewController: UITableViewController {
                 let item = itemStore.allItems[row]
                 let detailViewController = segue.destinationViewController as! DetailViewController // hmm... first time seeing us create an instance of a view controller...
                 detailViewController.item = item
+                detailViewController.imageStore = imageStore
                 
             }
         }

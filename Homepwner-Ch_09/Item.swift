@@ -13,12 +13,14 @@ class Item: NSObject {
     var valueInDollars: Int
     var serialNumber: String?
     let dateCreated: NSDate
+    let itemKey: String
     
     init(name: String, serialNumber: String?, valueInDollars: Int) { // this is our 'Designated Initializer'
         self.name = name
         self.valueInDollars = valueInDollars
         self.serialNumber = serialNumber
         self.dateCreated = NSDate()
+        self.itemKey = NSUUID().UUIDString
         
         super.init() // needed because we are inheriting from the NSObject base class (or really, any SuperClass)
     }
