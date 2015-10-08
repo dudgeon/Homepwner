@@ -107,14 +107,14 @@
 		6CC520E61BC4873A00B2F90C /* Homepwner-Ch_09 */ = {
 			isa = PBXGroup;
 			children = (
-				6CC5211F1BC4937700B2F90C /* ItemStore.swift */,
 				6CC5211D1BC4934D00B2F90C /* Item.swift */,
+				6CC5211F1BC4937700B2F90C /* ItemStore.swift */,
+				6C74E6AD1BC6C460002F58E1 /* ImageStore.swift */,
 				6CC521171BC48DFD00B2F90C /* ItemsViewController.swift */,
 				6CA3C5A51BC59EBF0003A29F /* ItemCell.swift */,
 				6CC520E71BC4873A00B2F90C /* AppDelegate.swift */,
 				6CC520EB1BC4873A00B2F90C /* Main.storyboard */,
 				6C702FAF1BC5C4AC0048980F /* DetailViewController.swift */,
-				6C74E6AD1BC6C460002F58E1 /* ImageStore.swift */,
 				6CC520EE1BC4873A00B2F90C /* Assets.xcassets */,
 				6CC520F01BC4873A00B2F90C /* LaunchScreen.storyboard */,
 				6CC520F31BC4873A00B2F90C /* Info.plist */,

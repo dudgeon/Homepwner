@@ -15,6 +15,8 @@ class Item: NSObject {
     let dateCreated: NSDate
     let itemKey: String
     
+    
+    //: MARK: Initialize
     init(name: String, serialNumber: String?, valueInDollars: Int) { // this is our 'Designated Initializer'
         self.name = name
         self.valueInDollars = valueInDollars
@@ -47,5 +49,28 @@ class Item: NSObject {
             self.init(name: "", serialNumber: nil, valueInDollars: 0)
         }
     }
+    
+    // MARK: - Save objects via NSCoding
+    // (works for any object that conforms to NSCoding)
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(name, forKey: "name")
+        aCoder.encodeObject(dateCreated, forKey: "dateCreated")
+        aCoder.encodeObject(itemKey, forKey: "itemKey")
+        aCoder.encodeObject(serialNumber, forKey: "serialNumber")
+        
+        aCoder.encodeInteger(valueInDollars, forKey: "valueInDollars") // note .encodeInteger vs. .encodeObject
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        name = aDecoder.decodeObjectForKey("name") as! String
+        dateCreated = aDecoder.decodeObjectForKey("dateCreated") as! NSDate
+        itemKey = aDecoder.decodeObjectForKey("itemKey") as! String
+        serialNumber = aDecoder.decodeObjectForKey("serialNumber") as! String?
+        
+        valueInDollars = aDecoder.decodeIntegerForKey("")
+        
+        super.init()
+    }
+    
     
 }

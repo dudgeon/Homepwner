@@ -12,6 +12,26 @@ class ItemStore {
     
     var allItems = [Item]()
     
+    // retrieve items from file system
+    init() {
+        if let archivedItems = NSKeyedUnarchiver.unarchiveObjectWithFile(itemArchiveURL.path!) as? [Item] {
+            allItems += archivedItems
+        }
+    }
+    
+    
+    // create a url to save items to file system
+    let itemArchiveURL: NSURL = {
+        let documentsDirectories = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let documentDirectory = documentsDirectories.first!
+        return documentDirectory.URLByAppendingPathComponent("items.archive")
+    }()
+    
+    func saveChanges() -> Bool {
+        print("Saving items to: \(itemArchiveURL.path!)")
+        return NSKeyedArchiver.archiveRootObject(allItems, toFile: itemArchiveURL.path!)
+    }
+    
     // the func that ItemsViewController will call to create a new item:
     func createItem() -> Item {
         let newItem = Item(random: true)
@@ -20,13 +40,6 @@ class ItemStore {
         
         return newItem
     }
-    
-    // let's create five items
-    //    init() {
-    //        for _ in 0..<5 {
-    //            createItem()
-    //        }
-    //    }
     
 
     // providing a delete action to pass to the table view commitEditingStyle 'method'
